@@ -4,10 +4,10 @@
 
 - For example, in
 
-'''python
+```python
 def fn(a, b):
     return a + b
-'''
+```
 The types of a and b are not known at build-time, only when a and b are assigned values at run-time.
 
 - Hence, calling
