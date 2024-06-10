@@ -1,19 +1,17 @@
 #!/usr/bin/env python
-import asyncio
-from typing import List
-from 0-basic_async_syntax import wait_random
 '''An async routine called wait_n that takes in 2 int arguments'''
 
 
+import asyncio
+from typing import List
+wait_random = __import__('0-basic_async_syntax').wait_random
+
+
 async def wait_n(n: int, max_delay: int) -> List[float]:
+    '''An async function'''
     delays = []
     for _ in range(n):
-        delays.append(await wait_random(max_delay))
-
-    sorted_delays = []
-    while delays:
-        min_delay = min(delay)
-        sorted_delays.append(min_delay)
-        delays.remove(min_delay)
-
-    return sorted_delays
+        value = asyncio.create_task(wait_random(max_delay))
+        delays.append(value)
+    val = [await r for r in asyncio.as_completed(delays)]
+    return val
