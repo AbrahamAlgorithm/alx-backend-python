@@ -7,7 +7,7 @@ import random
 from typing import AsyncGenerator
 
 
-async def async_generator() -> AsyncGenerator[float, None]:
+async def async_generator() -> AsyncGenerator[float, None, None]:
     '''The coroutine will loop 10 times'''
     for _ in range(10):
         await asyncio.sleep(1)
