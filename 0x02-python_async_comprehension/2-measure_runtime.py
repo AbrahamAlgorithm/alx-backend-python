@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-'''Asynchronous Comprehension as in PEP 525'''
+'''A coroutine will collect 10 random numbers'''
 
 
 import asyncio
@@ -10,9 +10,9 @@ async_comprehension = __import__('1-async_comprehension').async_comprehension
 
 
 async def measure_runtime() -> float:
-    '''The asynchronous generator function'''
-    start = time.perf_counter()
+    '''Returns the 10 random numbers'''
+    start_time = time.perf_counter()
     await asyncio.gather(async_comprehension(), async_comprehension(),
                          async_comprehension(), async_comprehension())
-    end = time.perf_counter() - start
-    return (end)
+    end_time = time.perf_counter() - start_time
+    return (end_time)
