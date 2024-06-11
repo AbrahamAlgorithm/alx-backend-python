@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-'''A coroutine that will execute async_comprehension four times in parallel'''
+'''Asynchronous Comprehension as in PEP 525'''
 
 
 import asyncio
@@ -10,9 +10,9 @@ async_comprehension = __import__('1-async_comprehension').async_comprehension
 
 
 async def measure_runtime() -> float:
-    '''The start time'''
-    start_time = time.perf_counter()
+    '''The asynchronous generator function'''
+    start = time.perf_counter()
     await asyncio.gather(async_comprehension(), async_comprehension(),
                          async_comprehension(), async_comprehension())
-    end_time = time.perf_counter() - start_time
-    return (end_time)
+    end = time.perf_counter() - start
+    return (end)
